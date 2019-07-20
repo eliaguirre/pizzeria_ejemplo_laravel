@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+Vue.use(require('vue-resource'));
 
 /**
  * The following block of code may be used to automatically register your
@@ -21,6 +22,11 @@ window.Vue = require('vue');
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('form-login', require('./components/form/Login.vue').default);
+Vue.component('validation-errors', require('./components/validation-errors.vue').default);
+Vue.component('users', require('./components/Users.vue').default);
+
+
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf_token').value;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

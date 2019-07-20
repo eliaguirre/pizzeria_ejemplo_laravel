@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Users;
+use App\User;
 use Illuminate\Support\Facades\Crypt;
 
 class DatabaseSeeder extends Seeder
@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('users')->delete();
-        Users::create(array('email' => 'ventas@ventas.com','name'=>'Ventas','role'=>'venta','password'=>Crypt::encryptString('pass')));
-        Users::create(array('email' => 'admin@ventas.com','name'=>'Admin','role'=>'admin','password'=>Crypt::encryptString('pass')));
+        User::create(array('email' => 'ventas@ventas.com','name'=>'Ventas','role'=>'venta','password'=>Hash::make('pass')));
+        User::create(array('email' => 'admin@ventas.com','name'=>'Admin','role'=>'admin','password'=>Hash::make('pass')));
     }
 }

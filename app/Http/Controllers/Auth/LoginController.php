@@ -55,11 +55,13 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->intended('admin/');
-        }
-        if (Auth::guard('venta')->attempt($credentials)) {
-            return redirect()->intended('pedidos/');
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if ($user->role=='venta') {
+                return redirect()->intended('pedidos/');
+            } elseif ($user->role='admin') {
+                return redirect()->intended('admin/');
+            }
         }
         return redirect()->back()
                 ->withErrors([
