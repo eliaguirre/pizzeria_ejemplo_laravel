@@ -58,7 +58,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             if ($user->role=='venta') {
-                return redirect()->intended('pedidos/');
+                return redirect()->intended('venta/');
             } elseif ($user->role='admin') {
                 return redirect()->intended('admin/');
             }

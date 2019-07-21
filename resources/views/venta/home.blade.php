@@ -1,10 +1,10 @@
-@extends('admin/template')
+@extends('venta/template')
 
-@section('title', 'Users')
+@section('title', 'Venta')
 
 @section('content')
     <div id="app">
         <input type="hidden" id="csrf_token" value="{{ csrf_token() }}" />
-        <users/>
+        <venta></venta>
     </div>
 @endsection

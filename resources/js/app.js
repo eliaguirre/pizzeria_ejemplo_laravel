@@ -25,6 +25,7 @@ Vue.component('form-login', require('./components/form/Login.vue').default);
 Vue.component('validation-errors', require('./components/validation-errors.vue').default);
 Vue.component('users', require('./components/Users.vue').default);
 Vue.component('venta', require('./components/Venta.vue').default);
+Vue.component('orders', require('./components/Orders.vue').default);
 
 var csrf = document.getElementById('csrf_token');
 if (csrf) {

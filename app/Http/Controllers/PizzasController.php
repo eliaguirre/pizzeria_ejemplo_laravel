@@ -26,6 +26,10 @@ class PizzasController extends Controller
     {
         $this->middleware('auth');
     }
+    public function venta(Request $request)
+    {
+        return view('venta/home');
+    }
 
     public function list(Request $request)
     {
