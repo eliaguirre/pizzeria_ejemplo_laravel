@@ -21,7 +21,7 @@ class UsersController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('guest')->except('logout');
+        $this->middleware('auth');
     }
 
 
@@ -34,6 +34,7 @@ class UsersController extends Controller
     {
         return  User::all('id', 'name', 'email', 'role');
     }
+
     public function add(Request $request)
     {
         $this->validate($request, [
@@ -42,20 +43,19 @@ class UsersController extends Controller
           'password' => 'required|confirmed|string|max:300',
           'role' => 'required|string|max:300'
          ]);
-        $user=new User();
+        $user = new User();
         $user->email = $request->input('email');
         $user->name = $request->input('name');
         $user->role = $request->input('role');
-        $user->password = $request->input('password');
+        $user->password = \Hash::make( $request->input('password') );
         $user->save();
         return $this->list($request);
     }
-
 
     public function delete(Request $request)
     {
         $user = User::find($request->input('id'));
         $user->delete();
-        return $this->list();
+        return $this->list($request);
     }
 }

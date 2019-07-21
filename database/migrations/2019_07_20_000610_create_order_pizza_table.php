@@ -13,12 +13,13 @@ class CreateOrderPizzaTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_pizza', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_user');
+        Schema::create('order_pizzas', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_order');
             $table->unsignedBigInteger('id_pizza');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_pizza')->references('id')->on('pizza');
-            $table->string('comments');
+            $table->foreign('id_order')->references('id')->on('orders');
+            $table->foreign('id_pizza')->references('id')->on('pizzas');
+            $table->decimal('quantity');
+            $table->string('comments')->nullable(true);
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateOrderPizzaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_pizza');
+        Schema::dropIfExists('order_pizzas');
     }
 }

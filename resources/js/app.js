@@ -24,9 +24,12 @@ Vue.use(require('vue-resource'));
 Vue.component('form-login', require('./components/form/Login.vue').default);
 Vue.component('validation-errors', require('./components/validation-errors.vue').default);
 Vue.component('users', require('./components/Users.vue').default);
+Vue.component('venta', require('./components/Venta.vue').default);
 
-
-Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf_token').value;
+var csrf = document.getElementById('csrf_token');
+if (csrf) {
+    Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementById('csrf_token').value;
+}
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -39,7 +39,7 @@
             </div>
         </div>
         <button type="button" class="btn btn-default" @click="isShowingAdd ^= true"> Cancel </button>
-        <button type="button" class="btn btn-primary" v-on:click="guardar()"> Guardar </button>
+        <button type="button" class="btn btn-primary" v-on:click="guardar()"> Save </button>
     </div>
     <table class="table" v-show="!isShowingAdd">
         <thead>
